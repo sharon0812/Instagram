@@ -193,6 +193,7 @@ def comment(request,post_id):
 @csrf_exempt
 def like_post(request, post_id):
     user = User.objects.get(pk=request.POST['user_id'])
+    
     # import pdb; pdb.set_trace()
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
@@ -216,21 +217,4 @@ def like_post(request, post_id):
     
     return JsonResponse({"likes":len(post_obj.liked.all())})
         
-# @login_required
-# def like(request, post_id):
-#     user = request.user
-#     post = post.objects.get(id=post_id)
-    
-#     liked = likes.objects.filter(user=user, post=post).count()
-    
-#     if not liked:
-#         like = likes.objects.Create(user=user, post=post)
-#         current_likes = current_likes + 1
-#     else:
-#         Likes.objects.filter(user=user, post=post).delete()
-#         current_likes = current_likes - 1
-        
-#     post.like = current_likes
-#     post.save()
-    
-#     return HttpResponseRedirect(reverse('MainPage'))
+
