@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import os.path
 from pathlib import Path
-import django_heroku
-import dj_database_url
+# import dj_database_url
 from decouple import config,Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'insta',
     'users',
     'bootstrap3',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +85,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'insagram',
+        'USER': 'moringa',
+        'PASSWORD':'Access',
+    
     }
 }
 
@@ -126,3 +130,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+LOGIN_REDIRECT_URL='insta-index'
+
+LOGIN_URL = 'login'
+
+LOGOUT_REDIRECT_URL = 'login/'
+
+# changing user password
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT =587
+EMAIL_USE_TLS =True
+EMAIL_HOST_USER ='anyangosharon2021@gmail.com'
+EMAIL_HOST_PASSWORD ='shaz0702165045'
