@@ -83,7 +83,6 @@ class ProfileDetailView(DeleteView):
         context = super().get_context_data(**kwargs)
         view_profile = self.get_object()
         my_profile = Profile.objects.get(user=self.request.user)
-        # posts = Post.objects.get(author__id__in=view_profile)
         if view_profile.user in my_profile.following.all():
             follow = True
         else:
@@ -148,6 +147,7 @@ def post_detail(request, slug):
     # post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True) #retrieves all the approved comments from the database.
     new_comment = None
+
     # Comment posted
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
@@ -155,8 +155,10 @@ def post_detail(request, slug):
 
             # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
+
             # Assign the current post to the comment
             new_comment.post = post
+
             # Save the comment to the database
             new_comment.save()
     else:
@@ -193,7 +195,7 @@ def comment(request,post_id):
 @csrf_exempt
 def like_post(request, post_id):
     user = User.objects.get(pk=request.POST['user_id'])
-    
+
     # import pdb; pdb.set_trace()
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
