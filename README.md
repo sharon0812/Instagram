@@ -7,6 +7,7 @@ Sharon Anyango
 This app allows users to create an accounts, post a pictures, comment, like folow people and also view other people post.
 
 ## GITHUB REPO LINK
+https://github.com/sharon0812/Instagram
 
 ## FEATURES
 * A user can create account register and log in.
