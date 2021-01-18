@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from users.models import Profile
+import cloudinary
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -11,7 +13,7 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')
+    image = CloudinaryField('images')
     liked = models.ManyToManyField(User, default=None, blank=True , related_name='liked')
     
     def save_post(self):

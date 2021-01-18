@@ -15,6 +15,9 @@ import os.path
 from pathlib import Path
 # import dj_database_url
 from decouple import config,Csv
+import cloudinary.uploader
+from decouple import config, Csv
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,3 +158,9 @@ EMAIL_PORT =587
 EMAIL_USE_TLS =True
 EMAIL_HOST_USER ='anyangosharon2021@gmail.com'
 EMAIL_HOST_PASSWORD ='shaz0702165045'
+
+cloudinary.config(
+  cloud_name = "di4pd4yxp",
+  api_key = "865599825291137",
+  api_secret = "3-k9A1NISwjplnmUpyDdaNcEHfU"
+)
