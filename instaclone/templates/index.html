@@ -1,6 +1,7 @@
-{% extends "insta/base.html" %}
+{% extends "instaclone/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
   <div class="container-fluid">
     <div style="flex-wrap: nowrap; overflow-x: scroll;" class="row ">
         {% for profile in profiles %}
@@ -14,7 +15,7 @@
                 
               </div>
               <a href="{% url 'profile-detail-view' profile.pk %}">
-                <button class="btn btn-primary">See profile</button>
+                <button class="btn btn-success">See profile</button>
               </a>
             </div>
           </div>
@@ -79,7 +80,7 @@
                             {% endif %}
                 </span></h4>
                 <div class="card-body">
-                      <!-- <p class=""> {{comments|length}} comments </p> -->
+                     
                       {% for com in post.comments.all %}
                     
                      
@@ -94,6 +95,7 @@
             </div>
           </div>
         </article>
+        
     {% endfor %}
 {% endblock content %}
 {% block mydata%}

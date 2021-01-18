@@ -29,12 +29,12 @@
     <div class="col-md-3">
         <img class="rounded-circle article-img" src="{{object.image.url}}" alt="">
         <div><p class="btn btn-warning">{{object.user}}</p></div>
-      <hr />
+      <hr/>
       {% if follow %}
       <form  action="{% url 'follow-unfollow-view' %}" method="post">
         {% csrf_token %}
-        <input type="hidden" name="profile_pk" value="{{object.pk}}" />
-        <button type="submit" class="btn btn-danger">unfollow</button>
+        <input type="hidden" name="profile_pk" value="{{object.pk}}"/>
+        <button type="submit" class="btn btn-success">unfollow</button>
       </form>
       {% else %}
       <button type="submit" id="follow-btn" class="btn btn-success">

@@ -1,5 +1,4 @@
-{%extends 'insta/base.html'%}
-
+{%extends 'instaclone/base.html'%}
 {% block content %}
 {{block.super}}
 
@@ -22,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <img src="{{ user_profile.profile.image.url}}" alt=""
-                             class="rounded-circle border ml-3 mt-2  mr-3" width="55" height="55">
+                             class="rounded-circle border ml-3 mt-2  mr-3" width="30" height="30">
                     </div>
                     <div>
                         <h2>{{user_profile.username}}</h2>
@@ -30,7 +29,7 @@
                     
                     <div class="col-md-3 mt-3">
                         <a href="{% url 'profile-detail-view' user_profile.profile.pk %}">
-                            <button class="btn btn-primary">See profile</button>
+                            <button class="btn btn-success">See profile</button>
                           </a>
                     </div>
                 </div>

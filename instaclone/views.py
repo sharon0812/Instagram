@@ -24,7 +24,7 @@ def follow_unfollow_profile(request):
         else:
             my_profile.following.add(obj.user)
         return redirect(request.META.get('HTTP_REFERER'))
-    return redirect('instaclone-index')
+    return redirect('insta-index')
             
             
 
@@ -88,8 +88,7 @@ class ProfileDetailView(DeleteView):
         else:
             follow = False
         context["follow"] = follow
-        # context['posts'] = posts
-        # context["post"] = Post.objects.filter(pk=pk)
+       
         return context
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -97,9 +96,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'content', 'image']
 
     def form_valid(self,form):
-        # self.object = form.save(commit=False)
         form.instance.author = self.request.user.profile
-        # self.object.save()
         return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -144,7 +141,6 @@ def search_results(request):
 
 def post_detail(request, slug):
     template_name = 'post_detail.html'
-    # post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True) #retrieves all the approved comments from the database.
     new_comment = None
 
@@ -184,7 +180,7 @@ def comment(request,post_id):
                         comment.post = post
                         comment.author = request.user
                         comment.save()
-                return redirect('instaclone-index')
+                return redirect('insta-index')
         else:
                 form = CommentForm()
  
